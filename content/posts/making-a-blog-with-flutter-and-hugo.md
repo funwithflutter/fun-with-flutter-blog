@@ -12,7 +12,7 @@ tags:
 - Flutter Web
 - Hugo
 thumbnail: "fun_with_thumbnail_template.png"
-description: "Using Hugo to generate a static API and making a site with Flutter"
+description: "Using Hugo to generate a static API and making a website with Flutter."
 series:
 -
 ---
@@ -32,7 +32,7 @@ The FunWith [website](https://funwith.app/) and [blog](https://fun-with-blog.fir
 
 The use of Hugo came more from need than desire. Flutter Web is still in early stages and as a result I wanted to ensure that the content I produce has a safe place to live; come in Hugo. While at the same time I wanted to expose that content to the Flutter web application and make use of Flutter as much as I could; come in Hugo as an API.
 
-![alternate text](https://memegenerator.net/img/instances/52633021.jpg)
+![Example image](/memes/meme_why_not_both.png)
 
 Lastly, I did not want to make unnecessary work for myself. Frameworks like Hugo, Ghost, Jekyll, etc, are made in such a way that they are easily configurable, fast, and most important it's easy to produce content on.
 
@@ -42,7 +42,7 @@ Motivation and expectations set - let’s jump into the code.
 
 ## The Code ##
 
-The main reason you're here. Both the [blog](BLOG) and site [site](https://github.com/funwithflutter/fun-with-flutter-website) are open source so take a look if you want!
+The main reason you're here. Both the [blog](https://github.com/funwithflutter/fun-with-flutter-blog) and site [site](https://github.com/funwithflutter/fun-with-flutter-website) are open source so take a look if you want!
 
 The [Hugo docs](https://gohugo.io/getting-started/quick-start/) provide a better explanation than I could to get setup and started using Hugo.
 
@@ -138,7 +138,7 @@ https://forestry.io/blog/hugo-json-api-part-2/
 
 That is basically that. We now have a static `json` file that we can host and query to retrieve the blog content that we need.
 
-For example, from the Flutter web application I make an HTTP request to the [index.json](https://fun-with-blog.firebaseapp.com/index.json) file hosted on the FunWith [blog](https://fun-with-blog.firebaseapp.com/). Once the `json` is retrieve it can be parsed into objects and used within the application as desired.
+For example, from the Flutter web application I make an HTTP request to the [index.json](https://fun-with-blog.firebaseapp.com/index.json) file hosted on the FunWith [blog](https://fun-with-blog.firebaseapp.com/). Once the `json` is retrieve it can be parsed into objects and used within the application as desired. Future blog posts will go into more detail regarding this.
 
 ## What’s Next ##
 
