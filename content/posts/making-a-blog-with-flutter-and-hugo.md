@@ -11,7 +11,7 @@ categories:
 tags:
 - Flutter Web
 - Hugo
-thumbnail: "fun_with_thumbnail_template.png"
+thumbnail: "fun_with_web_devlog_01.png"
 description: "Using Hugo to generate a static API and making a website with Flutter."
 series:
 -
