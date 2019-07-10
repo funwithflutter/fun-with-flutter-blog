@@ -1,0 +1,17 @@
+{{- $.Scratch.Add "tags" slice -}}
+
+{{- range $tagname, $tags := .Site.Taxonomies.tags -}}
+    {{- $.Scratch.Add "pages" slice -}}
+    {{ range $index, $page := $tags.Pages }}
+        {{- $.Scratch.Add "pages" (dict "uri" .Permalink "title" .Title "description" .Params.description "thumbnail" .Params.thumbnail) -}}
+    {{- end -}}
+    {{- $.Scratch.Add "tags" (dict "name" $tagname "pages" ($.Scratch.Get "pages") ) -}}
+    {{- $.Scratch.Delete "pages" -}}
+{{- end -}}
+
+{{- $.Scratch.Add "allPages" slice -}}
+{{- range .Data.Pages.ByDate.Reverse -}}
+    {{- $.Scratch.Add "allPages" (dict "uri" .Permalink "title" .Title "description" .Params.description "thumbnail" .Params.thumbnail ) -}}
+{{- end -}}
+
+{{- dict "tags" ( $.Scratch.Get "tags" ) "pages" ( $.Scratch.Get "allPages") | jsonify -}}
