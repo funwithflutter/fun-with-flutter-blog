@@ -16,6 +16,8 @@ description: "Using Hugo to generate a static API and making a website with Flut
 series:
 -
 ---
+{{< youtube 3VTTrGZrYS0 >}}
+
 Lets begin with a quick description for Flutter Web and Hugo, and then provide an overview and motivation for using these two technologies together.
 
 ## Overview ##
