@@ -3,7 +3,7 @@ title: "The Fun with Flutter website"
 slug: funwith-intro
 description: null
 date: 2019-07-03T21:26:20+07:00
-type: posts
+type: blog
 draft: false
 categories:
 - General

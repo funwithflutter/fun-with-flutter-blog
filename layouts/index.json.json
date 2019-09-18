@@ -10,7 +10,7 @@
 {{- end -}}
 
 {{- $.Scratch.Add "allPages" slice -}}
-{{- range .Data.Pages.ByDate.Reverse -}}
+{{- range where .Site.Pages "Type" "blog" -}}
     {{- $.Scratch.Add "allPages" (dict "uri" .Permalink "title" .Title "description" .Params.description "thumbnail" .Params.thumbnail ) -}}
 {{- end -}}
 

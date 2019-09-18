@@ -1,5 +1,5 @@
 # Set base URL for site - should end with a trailing slash
-baseUrl = "https://fun-with-blog.firebaseapp.com/"
+baseUrl = "https://blog.funwith.app/"
 
 theme = "slick"
 

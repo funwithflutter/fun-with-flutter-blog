@@ -4,7 +4,7 @@ slug: making-a-blog-with-flutter-and-hugo
 author: "Gordon"
 description: null
 date: 2019-07-09T11:00:55+07:00
-type: posts
+type: blog
 draft: false
 categories:
 - General
@@ -13,7 +13,7 @@ tags:
 - Hugo
 thumbnail: "fun_with_web_devlog_01.png"
 description: "Using Hugo to generate a static API and making a website with Flutter."
-series:
+series: 
 -
 ---
 {{< youtube 3VTTrGZrYS0 >}}
@@ -34,7 +34,7 @@ The FunWith [website](https://funwith.app/) and [blog](https://fun-with-blog.fir
 
 The use of Hugo came more from need than desire. Flutter Web is still in early stages and as a result I wanted to ensure that the content I produce has a safe place to live; come in Hugo. While at the same time I wanted to expose that content to the Flutter web application and make use of Flutter as much as I could; come in Hugo as an API.
 
-![Example image](/memes/meme_why_not_both.png)
+![Why not both meme](/memes/meme_why_not_both.png)
 
 Lastly, I did not want to make unnecessary work for myself. Frameworks like Hugo, Ghost, Jekyll, etc, are made in such a way that they are easily configurable, fast, and most important it's easy to produce content on.
 
