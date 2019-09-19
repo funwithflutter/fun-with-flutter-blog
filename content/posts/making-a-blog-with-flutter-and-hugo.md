@@ -30,7 +30,7 @@ is one of the most popular open-source static site generators. With its amazing 
 
 ## Motivation ##
 
-The FunWith [website](https://funwith.app/) and [blog](https://fun-with-blog.firebaseapp.com/) are companions for the Fun with Flutter YouTube [channel](https://www.youtube.com/funwithflutter). So using Flutter Web seemed like an obvious choice at it serves the dual purpose of function and learning (for myself as well as others).
+The FunWith [website](https://funwith.app/) and [blog](https://fun-with-blog.firebaseapp.com/) are companions for the Fun with Flutter YouTube [channel](https://www.youtube.com/funwithflutter). So using Flutter Web seemed like an obvious choice as it serves the dual purpose of function and learning (for myself as well as others).
 
 The use of Hugo came more from need than desire. Flutter Web is still in early stages and as a result I wanted to ensure that the content I produce has a safe place to live; come in Hugo. While at the same time I wanted to expose that content to the Flutter web application and make use of Flutter as much as I could; come in Hugo as an API.
 
@@ -44,21 +44,21 @@ Motivation and expectations set - let’s jump into the code.
 
 ## The Code ##
 
-The main reason you're here. Both the [blog](https://github.com/funwithflutter/fun-with-flutter-blog) and site [site](https://github.com/funwithflutter/fun-with-flutter-website) are open source so take a look if you want!
+The main reason you're here. Both the [blog](https://github.com/funwithflutter/fun-with-flutter-blog) and [site](https://github.com/funwithflutter/fun-with-flutter-website) are open source so take a look if you want!
 
 The [Hugo docs](https://gohugo.io/getting-started/quick-start/) provide a better explanation than I could to get setup and started using Hugo.
 
-I did not do anything special for the blog, but let me give you a quick overview of how Hugo works. In Hugo you can define layout files that style different sections of your site. For example, you could have layout files that create the home page, site sections, and individual posts. Once you run Hugo it proceeds to take your markdown files (and their respective folders and subfolders) and generates static `HTML` pages based on these defined layouts. Hugo will also generate an `index.html` file for the landing (home) page.
+I did not do anything special for the blog, but let me give you a quick overview of how Hugo works. In Hugo you can define layout files that style different sections of your site. For example, you could have layout files that create the home page, site sections, and individual posts. Once you run Hugo it proceeds to take your markdown files (and their respective folders and sub-folders) and generates static `HTML` pages based on these defined layouts. Hugo will also generate an `index.html` file for the landing (home) page.
 
 If you use a theme for Hugo there is technically nothing you need to do on your end except to make the markdown files (blog posts) and then run Hugo to generate the static `HTML` pages.
 
-I was not too concerned about the look of the FunWith blog as it mostly serves to statically serve the content, while the Flutter site will take that content and make it pretty. So I didn’t spend any time customizing the blog - except for some time learning the ropes of Hugo and choosing a theme. The theme that I’m using is [Slick](https://themes.gohugo.io/slick/).
+I was not too concerned about the look of the FunWith blog as it mostly serves to statically serve the content, while the Flutter site will take that content and make it pretty. So I didn’t spend any time customizing the blog - except for some time learning the ropes of Hugo and choosing a theme. The theme that I'm using at the time of writing is [Slick](https://themes.gohugo.io/slick/).
 
 Next, we need a way to get the blog content into our Flutter web application. This is relatively simple to do, provided you understand some Hugo templating and functionality.
 
 #### Generating JSON ####
 
-This is all possible owing to Hugo's ability to output [different file types](https://gohugo.io/templates/output-formats/). For example, instead of outputting `HTML` pages we can set it up to output `json` files - or both `json` and `HTML` as we will be doing. Similar to how we would create layout files to do theming we can also define layouts that will build static `json` files when running Hugo.
+This is all possible owing to Hugo's ability to output [different file types](https://gohugo.io/templates/output-formats/). For example, instead of outputting `HTML` pages we can set it up to output `json` files - or both `json` and `HTML` as we will be doing. Similar to how we would create layout files to customize our theme, we can also define layouts that will build static `json` files when running Hugo.
 
 The first thing to do is define the layout types in the Hugo configuration file. Below is an example of such a configuration.
 

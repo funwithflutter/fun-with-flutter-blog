@@ -11,11 +11,13 @@ tags:
 thumbnail: "fun_with_web_devlog_02.png"
 description: "Updates to Flutter Web - September 2019"
 ---
-As you may have heard by now, the separate Flutter-Web branch has now been merged into the main Flutter repository. This means you no longer need to do special imports for your Flutter-Web projects. It also means you can import packages from the pub store into your Web application as you normally would.
+{{< youtube gtJpyd3-H4M >}}
+
+As you may have heard by now, the separate Flutter-Web branch has been merged into the main Flutter repository. This means you no longer need to do special imports for your Flutter-Web projects. It also means you can import packages from the pub store into your Web application as you normally would.
 
 ![Flutter web old repo](/pictures/flutter_web_updates_sept_2019/flutter_web_old_repo.png)
 
-Don't get too excited though, at the time of writing this is only available on the Flutter dev and master channel - so you'd need to switch to those channels and live a bit dangerously to give Flutter Web a test drive. You will also need to enable Flutter Web.
+Don't get too excited though, at the time of writing, this is only available on the Flutter dev and master channel - so you'd need to switch to those channels and live a bit dangerously to give Flutter Web a test drive. You will also need to enable Flutter Web.
 
 ```
 flutter config --enable-web
@@ -53,4 +55,6 @@ In addition to that, the browser now recognises your mouse when it hovers over e
 
 I'll be making more posts on Flutter Web as I add features, and I'll also be creating a couple of blog posts and videos explaining my current implementation, how to incorporate Firebase, and some of the work arounds I used to add certain functionality (links, tab-throughs). Note that depending on when you read this the environment might be completely different - as Flutter Web is maturing and adding more features things may be different in the future.
 
-If you want to see a website made in Flutter Web, feel free to check out the [Fun with Flutter](https://funwith.app) website. You can create an account on the site (it uses Firebase as a backend). If you sign up the site will reveal to you the Flutter YouTube channel that I currently enjoy the most! Early bird signees will also be rewarded with discounts on future material and other goodies. Depending on when you read this there might already be some other cool stuff on the site. So go check it out anyway :)
+If you want to see a website made in Flutter Web, feel free to check out the [Fun with Flutter](https://funwith.app) website. The code is also open source, if you are interested you can find it [here](https://github.com/funwithflutter/fun-with-flutter-website).
+
+Last but not least, you now create an account on the site (it uses Firebase as a backend). If you sign up the site will reveal to you the Flutter YouTube channel that I currently enjoy the most! Early bird signees will also be rewarded with discounts on future material and other goodies. Depending on when you read this there might already be some other cool stuff on the site. So go check it out anyway :)
