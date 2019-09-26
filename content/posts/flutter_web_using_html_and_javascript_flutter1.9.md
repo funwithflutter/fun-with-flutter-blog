@@ -1,5 +1,5 @@
 ---
-title: "Flutter Web: Using HTML and JavaScript - Flutter 1.9"
+title: "Flutter Web: Using HTML and JavaScript"
 slug: flutter-web-using-html-and-javascript-flutter1
 description: null
 date: 2019-09-21T12:33:39+07:00
