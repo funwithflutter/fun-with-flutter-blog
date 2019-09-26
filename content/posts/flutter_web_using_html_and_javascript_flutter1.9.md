@@ -4,14 +4,17 @@ slug: flutter-web-using-html-and-javascript-flutter1
 description: null
 date: 2019-09-21T12:33:39+07:00
 type: blog
-draft: true
+draft: false
 categories:
 - General
 tags:
 - Flutter Web
+thumbnail: "fun_with_web_devlog_03.png"
+description: "How to use HTML and JavaScript in your Flutter Web application - Flutter 1.9"
 series:
 -
 ---
+{{< youtube _5JAytP225A >}}
 The date of publication is important. If you're reading this and it's not September 2019 then there might be a better solution to the problem I'll be describing below.
 
 If it is September 2019, and/or  the problem below does affect you, then welcome, enjoy, and bask in the information that will be shared with you.
