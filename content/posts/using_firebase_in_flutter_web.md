@@ -1,5 +1,5 @@
 ---
-title: "Using_firebase_in_flutter_web"
+title: "Using Firebase in Flutter Web"
 slug: using-firebase-in-flutter-web
 description: null
 date: 2019-09-26T12:21:59+07:00
