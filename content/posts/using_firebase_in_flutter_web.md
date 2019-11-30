@@ -88,6 +88,32 @@ Alternatively, you can also initialize your app within `JavaScript` in the `inde
   </script>
 </body>
 {{< /highlight >}}
+
+## A Note on Hot Reload/Restart ##
+
+After adding `firebase.initializeApp` you might notice that hot reload and hot restart no longer works. With an error message similar to the following in your browser’s console:
+
+> Firebase App named ‘[DEFAULT]’ already exists (app/duplicate-app).
+
+This means you will need to add a check before calling `initializeApp`, and that check is to make sure that it hasn’t already been initialized. You can do that by changing your `main` function as follows:
+
+{{< highlight dart >}}
+void main() {
+  if (fb.apps.isEmpty) {
+    fb.initializeApp(
+      apiKey: 'AIzaSyD8JoU_58xKlQFvva7nS7VHTKc1vUkaosk',
+      authDomain: 'fun-with.firebaseapp.com',
+      databaseURL: 'https://fun-with.firebaseio.com',
+      projectId: 'fun-with',
+      storageBucket: 'fun-with.appspot.com',
+      messagingSenderId: '1006728819313',
+    );
+  }
+}
+{{< /highlight >}}
+
+Notice the conditional to see if `fb.apps.length` is not equal to 0. If yes, then we initialize Firebase.
+
 ## Firebase Authentication ##
 
 Now that Firebase is initialized we can easily use the Firebase relevant functionality.
