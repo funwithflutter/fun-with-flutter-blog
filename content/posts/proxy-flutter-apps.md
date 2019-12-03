@@ -104,18 +104,17 @@ The SSL certificate sent by the server is signed by a certificate authority (CA)
 
 Our browsers and mobile devices have a list of known and trusted CAs. That means our browsers can verify that the server we are communicating with (who sent the SSL certificate) is who they say they are. If you want more information on Digital Certificates and Certificate Authorities I suggest the following videos:
 
-[Intro to Digital Certificates](https://www.youtube.com/watch?v=qXLD2UHq2vk&t=255s)
+* [Intro to Digital Certificates](https://www.youtube.com/watch?v=qXLD2UHq2vk&t=255s)
+* [Digital Certificates: Chain of Trust](https://www.youtube.com/watch?v=heacxYUnFHA&t=25s)
 
-[Digital Certificates: Chain of Trust](https://www.youtube.com/watch?v=heacxYUnFHA&t=25s)
-
-Once we have established trust with the server we are communicating with, then we can initiate the encryption process. For that we will need an encryption key that is shared between the client and the server. This key will be used to encrypt and decrypt traffic between them. This is known as [Symmetric Key Encryption](https://www.cryptomathic.com/news-events/blog/symmetric-key-encryption-why-where-and-how-its-used-in-banking#:~:targetText=Symmetric%20encryption%20is%20a%20type,used%20in%20the%20decryption%20process.)
+Once we have established trust with the server we are communicating with, then we can initiate the encryption process. For that we will need an encryption key that is shared between the client and the server. This key will be used to encrypt and decrypt traffic between them. This is known as [Symmetric Key Encryption](https://www.cryptomathic.com/news-events/blog/symmetric-key-encryption-why-where-and-how-its-used-in-banking#:~:targetText=Symmetric%20encryption%20is%20a%20type,used%20in%20the%20decryption%20process).
 
 First we need to generate a Symmetric Key, and here our client (Android/iOS device or browser) steps up and does just that. Now we need to send that key to our server. But hold on a minute. The point of this whole process is to be secure. That means we can't just send the Symmetric key over non-secure HTTP. We need a way to encrypt the encryption key, and a way for the server to decrypt that to, finally, get the key to do further encryption.
 
 To do this we will use Asymmetric Encryption.
 > Asymmetric cryptography, also known as public key cryptography, uses public and private keys to encrypt and decrypt data
 
-That SSL Certificate we mentioned above, the one that the client receives from the server, contains a public key that we can use to encrypt the secret. To decrypt Assymetric Encryption requires the matching private key of the public key used to encrypt the data. Under the correct circumstances, only our server will have access to that private key. And there we go, we have a secure way to send the Symmetric Key (or secret) to the server. And now all future traffic can be encrypted with that secret using Symmetric Cryptography.
+That SSL Certificate we mentioned above, the one that the client receives from the server, contains a public key that we can use to encrypt the secret. To decrypt Asymmetric Encryption requires the matching private key of the public key used to encrypt the data. Under the correct circumstances, only our server will have access to that private key. And there we go, we have a secure way to send the Symmetric Key (or secret) to the server. And now all future traffic can be encrypted with that secret using Symmetric Cryptography.
 
 You might ask, why do we need Symmetric Cryptography. Why not just use Asymmetric Encryption for everything. The short answer is because Symmetric Cryptography is faster, which lends itself well for internet traffic.
 
@@ -133,9 +132,8 @@ In the companion video I go into great detail explaining and demonstrating this.
 
 On a mobile device this works in a similar fashion. Just like you can install a self-signed certificate in a browser, you can also install your own self-signed certificates on an Android and iOS device. Between Android and iOS the process is a little bit different and there are some limitations on Android (the reason I made this post). See the following links for more details:
 
-[iOS Certificate Profiles](https://support.apple.com/en-us/HT204477)
-
-[Android CA Certificate](https://stackoverflow.com/questions/4461360/how-to-install-trusted-ca-certificate-on-android-device)
+* [iOS Certificate Profiles](https://support.apple.com/en-us/HT204477)
+* [Android CA Certificate](https://stackoverflow.com/questions/4461360/how-to-install-trusted-ca-certificate-on-android-device)
 
 The main thing that you need to know is that from Android N onwards it gets harder to intercept an application's SSL traffic. Android applications will not respect self-signed certificates added to the device's trust store. Certificates that you add on Android will be trusted by the Android browser, but not by other applications.
 
@@ -145,7 +143,7 @@ If that SSL certificate is signed by a known and trusted Certificate Authority t
 
 This is quite easy to do, but should be done with caution. Self-signed certificates are perfect for development environments. However, under most circumstances you would prefer to go the Certificate Authority route. Most cloud services automatically configure an SSL certificate for you anyway, so there is no reason not to. Firebase hosting is an example. If you host an application on Firebase Hosting they will automatically provision SSL for you.
 
-Note that a lot of these providers use shared SSL certificates - meaning other domains/sites might be using the same certificate as your site. This migh not be an issue for you, but there are reasons that you might want your own dedicated SSL certificate issued to your domain/company. For more info see below:
+Note that a lot of these providers use shared SSL certificates - meaning other domains/sites might be using the same certificate as your site. This might not be an issue for you, but there are reasons that you might want your own dedicated SSL certificate issued to your domain/company. For more info see below:
 
 [Firebase Shared SSL Certificates](https://stackoverflow.com/questions/53473695/google-firebase-ssl-certificate-my-certificate-has-a-large-number-of-other-web)
 
@@ -209,9 +207,8 @@ The method `setTrustedCertificatesBytes` requires a PEM or PKCS12 file containin
 
 Depending on the Proxy Tool you use you might be required to convert your SSL certificates to a different encoding or file format. For example in the video I convert a DER file to a PEM file. For more information regarding this please see the following links:
 
-[Common OpenSSL commands](https://www.sslshopper.com/article-most-common-openssl-commands.html)
-
-[Difference between .pem, .cer and .der](https://stackoverflow.com/questions/22743415/what-are-the-differences-between-pem-cer-and-der)
+* [Common OpenSSL commands](https://www.sslshopper.com/article-most-common-openssl-commands.html)
+* [Difference between .pem, .cer and .der](https://stackoverflow.com/questions/22743415/what-are-the-differences-between-pem-cer-and-der)
 
 ### Considering Security ###
 
@@ -245,4 +242,8 @@ Now our `main` function will only add our proxy certificate for debug builds of 
 
 ## Conclusion ##
 
-It is important to understand the basics of SSL Certificates and how HTTPS works before altering logic related to the security of your application's network traffic. Adding a self-signed certificate to your applications trust store is quite simple to do, but should still be done with caution. Do not take the easy route when it comes to the security of your application. But done correctly, you will have an easy way to intercept and inspect the underlying network traffic that your application generates.
+It is important to understand the basics of SSL Certificates and how HTTPS works before altering logic related to the security of your application's network traffic. Adding a self-signed certificate to your application's trust store is quite simple to do, but should still be done with caution. Do not take the easy route when it comes to the security of your application. 
+
+Done correctly, you will have an easy way to intercept and inspect the underlying network traffic that your application generates.
+
+
