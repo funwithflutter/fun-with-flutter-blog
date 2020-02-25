@@ -141,7 +141,9 @@ https://www.desmos.com/calculator/6gbvrm5i0s
 
 ![Learning More](/memes/learning.gif)
 
-**Want to learn more?** Check out my *Mastering Animation in Flutter* course.
+## Want to learn more?
+
+**Check out my *Mastering Animation in Flutter* course.**
 The course goes into great detail discussing everything you need to be a pro at animation in Flutter. It's the handbook to animate everything in Flutter, and it will teach you what you need to know in a structured and fun way. You might also be lucky and get it at a discount, use the promo code **FUN** for a **75% discount**.
 
 https://fun-with-flutter.teachable.com/
