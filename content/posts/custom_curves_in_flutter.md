@@ -16,6 +16,14 @@ description: "How to create custom animation curves in Flutter"
 ---
 In this blog post we will take a look at how we can create our own custom [Curve](https://api.flutter.dev/flutter/animation/Curve-class.html) in Flutter. And as an example we will create two curves: a Sine and Spring curve.
 
+Tired of reading, watch the video tutorial instead:
+
+{{< youtube qnnlGcZ8vaQ >}}
+
+Remember to subscribe to the YouTube channel if you want more content.
+
+## Curves in Flutter
+
 A curve in Flutter can be any mapping of a function over a time period (*t*) from **0.0** to **1.0**.
 
 > Easing curves are used to adjust the rate of change of an animation over time, allowing them to speed up and slow down, rather than moving at a constant rate.
