@@ -1,0 +1,3 @@
+[submodule "slick"]
+	path = slick
+	url = https://github.com/spookey/slick

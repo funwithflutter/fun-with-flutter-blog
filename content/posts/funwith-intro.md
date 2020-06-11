@@ -14,7 +14,6 @@ series:
 description: The Fun with Flutter website, made entirely in Flutter!
 thumbnail: fun_with_web_devlog_00.png
 ---
-Made entirely in Flutter! Well for the most part but it’s still pretty cool!
 
 Care to watch a video instead of reading, here you go:
 
