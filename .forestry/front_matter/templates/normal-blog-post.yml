@@ -1,0 +1,31 @@
+---
+label: Normal Blog Post
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: text
+  name: slug
+  label: slug
+- type: text
+  name: description
+  label: description
+- type: datetime
+  name: date
+  label: date
+- type: text
+  name: type
+  label: type
+- type: list
+  name: categories
+  label: categories
+- type: list
+  name: tags
+  label: tags
+- type: list
+  name: series
+  label: series
+- type: file
+  name: thumbnail
+  label: thumbnail
