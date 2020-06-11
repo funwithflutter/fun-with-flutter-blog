@@ -1,3 +1,3 @@
 [submodule "slick"]
-	path = slick
+	path = themes/slick
 	url = https://github.com/spookey/slick
