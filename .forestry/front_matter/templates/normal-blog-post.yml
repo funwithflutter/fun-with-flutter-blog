@@ -28,3 +28,4 @@ fields:
   label: thumbnail
 pages:
 - content/about.md
+- content/posts/provider-with-statenotifier.md
