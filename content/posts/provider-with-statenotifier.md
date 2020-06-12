@@ -98,6 +98,19 @@ By using `StateNotifier` instead of the original `ValueNotifier`, we get a lot o
 
 ## Show me the code
 
+First we need to add some dependencies to our app in `pubspec.yaml`.
+
+_Take note of the versions used for this tutorial. Future versions may have different implementations than what is shown in this tutorial._
+
+```dart
+dependencies:
+  flutter:
+    sdk: flutter
+  state_notifier: ^0.5.0
+  flutter_state_notifier: ^0.4.2
+  provider: ^4.1.3
+```
+
 We will begin by creating a `Counter` class that extends `StateNotifier` with a type `int`.
 
 ```dart
