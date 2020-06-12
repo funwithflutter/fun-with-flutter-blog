@@ -11,8 +11,8 @@ tags:
 - Flutter Web
 thumbnail: "fun_with_web_devlog_03.png"
 description: "How to use HTML and JavaScript in your Flutter Web application - Flutter 1.9"
-series:
--
+# series:
+# -
 ---
 {{< youtube _5JAytP225A >}}
 The date of publication is important. If you're reading this and it's not September 2019 then there might be a better solution to the problem I'll be describing below.

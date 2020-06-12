@@ -9,8 +9,8 @@ categories:
 - General
 tags:
 - Animation
-series:
--
+# series:
+# -
 thumbnail: "flutter_custom_curves.png"
 description: "How to create custom animation curves in Flutter"
 ---

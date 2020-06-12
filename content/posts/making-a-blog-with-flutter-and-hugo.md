@@ -2,7 +2,6 @@
 title: "Making a Blog With Flutter and Hugo"
 slug: making-a-blog-with-flutter-and-hugo
 author: "Gordon"
-description: null
 date: 2019-07-09T11:00:55+07:00
 type: blog
 draft: false
@@ -13,8 +12,8 @@ tags:
 - Hugo
 thumbnail: "fun_with_web_devlog_01.png"
 description: "Using Hugo to generate a static API and making a website with Flutter."
-series: 
--
+# series: 
+# -
 ---
 {{< youtube 3VTTrGZrYS0 >}}
 

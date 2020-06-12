@@ -9,8 +9,8 @@ categories:
 - General
 tags:
 - flutter-web
-series:
--
+# series:
+# -
 description: The Fun with Flutter website, made entirely in Flutter!
 thumbnail: fun_with_web_devlog_00.png
 ---

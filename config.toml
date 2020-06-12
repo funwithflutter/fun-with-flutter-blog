@@ -1,75 +1,134 @@
 # Set base URL for site - should end with a trailing slash
 baseUrl = "https://blog.funwith.app/"
-
-theme = "slick"
-
-# Site title (not shown if commented out or set to false)
-# (If you disable this, add some link on the index page inside menu.main,
-#  otherwise your visitors will get confused and lost...)
+languageCode = "en-us"
+defaultContentLanguage = "en"
 title = "Fun with Flutter"
+theme = "hermit"
 
-languageCode = "en"
-defaultContentLanguage = "en-us"
 
 # Will appear below the footer links with a © sign and the current year
-copyright = "Fun with Flutter — All rights reserved."
+# TODO
+# copyright = "Fun with Flutter — All rights reserved."
 
-
-pygmentsCodefences = true               # Enable highlighting inside codefences
+pygmentsCodeFences = true               # Enable highlighting inside codefences
 pygmentsCodeFencesGuessSyntax = true    # Highlight code without language tag
-pygmentsUseClasses = true               # Use external style sheet
-pygmentsUseClassic = false              # Force use of chroma
+# pygmentsUseClasses = true               # Use external style sheet
+# pygmentsUseClassic = true              # Force use of chroma
+pygmentsStyle = "dracula"
 
-canonifyURLs = true
-preserveTaxonomyNames = true
+# pygmentsCodefences = true               # Enable highlighting inside codefences
+# pygmentsCodeFencesGuessSyntax = true    # Highlight code without language tag
+# pygmentsUseClasses = true               # Use external style sheet
+# pygmentsUseClassic = false              # Force use of chroma
 
+#todo
+# canonifyURLs = true
+# preserveTaxonomyNames = true
+
+#todo
 # Configure pagination
-paginate = 10
-paginatePath = "page"
+# paginate = 10
+# paginatePath = "page"
+
 
 [params]
-    # Site subtitle (not shown if commented out or set to false)
-    subtitle = "Blog"
+  dateform        = "Jan 2, 2006"
+  dateformShort   = "Jan 2"
+  dateformNum     = "2006-01-02"
+  dateformNumTime = "2006-01-02 15:04 -0700"
 
-    # Site description
-    description = "Companion Blog for the Fun with Flutter YouTube channel"
+  # Metadata mostly used in document's head
+  # description = ""
+  # images = [""]
+  themeColor = "#494f5c"
 
-    # Favicon file (relative to baseURL - place below static folder)
-    favicon = "favicon.png"
-    # Custom css file (relative to baseURL - place below static folder)
-    css = "custom.css"
+  homeSubtitle = "Blog for the Fun with Flutter YouTube channel"
+  footerCopyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
+  # bgImg = ""  # Homepage background-image URL
 
-    # Define formatting of dates
-    # (optional, falls back to RFC822 format if not set)
-    # For reference to date and time formatting, see:
-    # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
-    # Make sure to set showMetaDates to true to see any dates
-    dateFmt = "Mon, 02 Jan 2006 15:04:05 MST"
+  # Prefix of link to the git commit detail page. GitInfo must be enabled.
+  # gitUrl = "https://github.com/username/repository/commit/"
 
-    # Customize the text of the 404 page here
-    errorPageText = "There's nothing to see here, please move along!"
+  # Toggling this option needs to rebuild SCSS, requires Hugo extended version
+  justifyContent = false  # Set "text-align: justify" to `.content`.
 
-    # Header with title/subtitle can be disabled here.
-    # (If you disable this, add some link on the index page inside menu.main,
-    #  otherwise your visitors will get confused and lost...)
-    showNavHeader = true
+  relatedPosts = false  # Add a related content section to all single posts page
 
-    # Decide if only summaries are shown on the main page or the full content
-    showFullContent = true
+  code_copy_button = true # Turn on/off the code-copy-button for code-fields
+  
+#   Add custom css
+#   customCSS = ["css/syntax.css"]
 
-    # If false no pagination is shown when there is nothing to paginate
-    showEmptyPagination = true
+  # Social Icons
+  # Check https://github.com/Track3/hermit#social-icons for more info.
+  [[params.social]]
+    name = "youtube"
+    url = "https://www.youtube.com/funwithflutter"
 
-    # If false the dates for the posts are not shown
-    showMetaDates = true
+  [[params.social]]
+    name = "twitter"
+    url = "https://twitter.com/FunFlutter"
 
-    # If false the taxonomy links for the posts are not shown
-    showMetaLinks = true
+  [[params.social]]
+    name = "github"
+    url = "https://github.com/funwithflutter/"
 
-    # Uses Hugo internal templates if set
-    opengraph = false
-    schema = false
-    twitter_cards = false
+# [menu]
+
+#   [[menu.main]]
+#     name = "Posts"
+#     url = "posts/"
+#     weight = 10
+
+#   [[menu.main]]
+#     name = "About"
+#     url = "about-hugo/"
+#     weight = 20
+
+#todo
+# [params]
+#     # Site subtitle (not shown if commented out or set to false)
+#     subtitle = "Blog"
+
+#     # Site description
+#     description = "Companion Blog for the Fun with Flutter YouTube channel"
+
+#     # Favicon file (relative to baseURL - place below static folder)
+#     favicon = "favicon.png"
+#     # Custom css file (relative to baseURL - place below static folder)
+#     css = "custom.css"
+
+#     # Define formatting of dates
+#     # (optional, falls back to RFC822 format if not set)
+#     # For reference to date and time formatting, see:
+#     # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
+#     # Make sure to set showMetaDates to true to see any dates
+#     dateFmt = "Mon, 02 Jan 2006 15:04:05 MST"
+
+#     # Customize the text of the 404 page here
+#     errorPageText = "There's nothing to see here, please move along!"
+
+#     # Header with title/subtitle can be disabled here.
+#     # (If you disable this, add some link on the index page inside menu.main,
+#     #  otherwise your visitors will get confused and lost...)
+#     showNavHeader = true
+
+#     # Decide if only summaries are shown on the main page or the full content
+#     showFullContent = true
+
+#     # If false no pagination is shown when there is nothing to paginate
+#     showEmptyPagination = true
+
+#     # If false the dates for the posts are not shown
+#     showMetaDates = true
+
+#     # If false the taxonomy links for the posts are not shown
+#     showMetaLinks = true
+
+#     # Uses Hugo internal templates if set
+#     opengraph = false
+#     schema = false
+#     twitter_cards = false
 
 
 # Define all supported taxonomies (add series to the default)
@@ -79,6 +138,8 @@ paginatePath = "page"
     description = "descriptions"
     # categories = "categories"
     # series = "series"
+
+# disableKinds = ["RSS"]
 
 
 [author]
@@ -95,7 +156,7 @@ paginatePath = "page"
         name = "Posts"
         title = "All posts"
         url = "/posts/"
-        weight = 1
+        weight = 10
 
     #[[menu.main]]
     #    identifier = "categories"
@@ -109,7 +170,12 @@ paginatePath = "page"
         name = "Tags"
         title = "All tags"
         url = "/tags/"
-        weight = 2
+        weight = 20
+
+    [[menu.main]]
+        name = "About"
+        url = "about-hugo/"
+        weight = 30
 
     #[[menu.main]]
     #    identifier = "series"
@@ -129,10 +195,10 @@ paginatePath = "page"
     #    identifier = "series"
     #    name = "Series"
     #    weight = 2
-    [[menu.meta]]
-        identifier = "tags"
-        name = "Tags"
-        weight = 3
+    # [[menu.meta]]
+    #     identifier = "tags"
+    #     name = "Tags"
+    #     weight = 3
 
 
     # Add some footer links to your likings
@@ -149,6 +215,6 @@ paginatePath = "page"
         weight = 2
 
 [outputs]
-  home = ["json","html"]
-  page = ["html"]
+  home = ["json","html", "RSS"]
+  page = ["html","RSS"]
   section = ["html"]

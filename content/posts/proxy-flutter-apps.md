@@ -13,8 +13,8 @@ tags:
 - Networking
 thumbnail: "proxy_app_traffic.png"
 description: "How to proxy Flutter network traffic"
-series:
--
+# series:
+# -
 ---
 {{< youtube mnkNvcEYxdg >}}
 From hacking, debugging, developing, or to tickle some curiosity - there are a variety of reasons that you might want to inspect the underlying web traffic of an application. This article discusses a couple of possible solutions for Flutter applications, with a focus on proxying.

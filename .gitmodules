@@ -1,3 +1,6 @@
 [submodule "slick"]
 	path = themes/slick
 	url = https://github.com/spookey/slick
+[submodule "themes/hermit"]
+	path = themes/hermit
+	url = https://github.com/Track3/hermit

@@ -11,8 +11,8 @@ tags:
 - Flutter Web
 thumbnail: "fun_with_web_devlog_04.png"
 description: "Initialize Firebase in a Flutter web application and incorporate Firebase Authentication"
-series:
--
+# series:
+# -
 ---
 {{< youtube zo2dVYFHXcA >}}
 As with anything in the tech space — take note of this article’s date (September 2019). Landscapes are constantly changing, what is said below may no longer be relevant or there may be easier alternatives.
