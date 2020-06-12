@@ -1,13 +1,12 @@
 +++
 categories = []
-date = ""
-description = ""
+date = 2020-06-12T08:24:00Z
+description = "Using StateNotifier with Provider to easily manage state."
 draft = true
 slug = ""
-tags = []
+tags = ["State Managment"]
 thumbnail = ""
 title = "Provider with StateNotifier"
-type = ""
 
 +++
 ## Overview
@@ -16,7 +15,7 @@ In this tutorial we will take a look at the [State Notifier](https://pub.dev/pac
 
 As a demonstration we will create a counter application that also needs access to an external dependency to store the counter value to a "fake" local storage.
 
-A simple example, but it serves to illustrate the simplicity of `StateNotifier` as well its benefits.
+A simple example, but it serves to illustrate the simplicity of `StateNotifier` as well as its benefits.
 
 ## Before we begin
 
