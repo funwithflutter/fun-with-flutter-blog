@@ -220,4 +220,71 @@ That it. We have a working counter application. Our `_Body` is watching for chan
 
 ## Service Locators
 
-Now we're getting to the best part. [**StateNotifier**](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) is easily compatible with [**provider**](https://pub.dev/packages/provider) through an extra mixin: `LocatorMixin`.
+Now we're getting to the best part.
+
+In this example, we may want to use `Provider.of`/`context.read` to connect our `Counter` with external services. `StateNotifier` makes this easy, all we have to do is mix-in `LocatorMixin`.
+
+Imagine every time the `Counter` state is updated we also want to save the state value to local storage.
+
+Let's create an `ILocalStorage` abstract class with one method called `saveInt`, and a `FakeLocalStorage` that implements it. We won't really be creating a local storage, instead we'll only print the value as this is only for demonstration purposes.
+
+```dart
+abstract class ILocalStorage {
+  Future<void> saveInt(String key, int val);
+}
+
+class FakeLocalStorage implements ILocalStorage {
+  @override
+  Future<void> saveInt(String key, int val) async {
+    print('saving $val to $key');
+  }
+}
+```
+
+Next we will modify our `runApp` function to also have a `Provider<ILocalStorage>` that provides a `FakeLocalStorage` implementation. We use a `MultiProvider` to create the `StateNotifierProvider` as well.
+
+```dart
+void main() => runApp(
+      MultiProvider(
+        providers: [
+          Provider<ILocalStorage>(
+            create: (_) => FakeLocalStorage(),
+          ),
+          StateNotifierProvider<Counter, int>(
+            create: (_) => Counter(),
+          ),
+        ],
+        child: MyApp(),
+      ),
+    );
+```
+
+Then finally we need to be able to access the `ILocalStorage` in our `Counter` class:
+
+```dart
+class Counter extends StateNotifier<int> with LocatorMixin{
+  Counter() : super(0);
+
+  void increment() {
+    state++;
+  }
+ 
+  void decrement() {
+    state--;
+  }
+
+  @protected
+  @override
+  set state(int value) {
+    read<ILocalStorage>().saveInt('count', value);
+    super.state = value;
+  }
+}
+```
+
+  
+A couple of things to take note of:
+
+* We're adding the `LocatorMixin`
+* We're overriding the `state` setter so that we can save the value to local storage every time the state change
+* We're using the read method (from the `LocatorMixin`) to access the `ILocalStorage` dependency and calling `saveInt`.
