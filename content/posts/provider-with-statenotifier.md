@@ -16,11 +16,7 @@ In this tutorial we will take a look at the [State Notifier](https://pub.dev/pac
 
 As a demonstration we will create a counter application that also needs access to an external dependency to store the counter value to a "fake" local storage.
 
-A simple example, but it serves to illustrate the simplicity of `StateNotifier` as well as the benefits it provides.
-
-Prefer to watch instead of read? Here's the video:
-
-INSERT VIDEO
+A simple example, but it serves to illustrate the simplicity of `StateNotifier` as well its benefits.
 
 ## Before we begin
 
@@ -40,7 +36,7 @@ counter.addListener(_myCallback);
 counter.value = 10;  // Calls _myCallback.
 counter.value += 1;  // Also calls _myCallback.
 counter.removeListener(_myCallback);
-  
+
 counter.value += 1;  // Doesn't call anything.
 counter.dispose();
 ```
@@ -51,8 +47,9 @@ Flutter also provides a widget to easily consume a `ValueNotifier`, called
 
 ```dart
 final ValueNotifier<int> _counter = ValueNotifier<int>(0);
+...
 
-ValueListenableBuilder(
+return ValueListenableBuilder(
   builder: (BuildContext context, int value, Widget child) {
     // This builder will only get called when the _counter
     // is updated.
@@ -84,16 +81,16 @@ To quote the documentation:
 
 > Extracting ValueNotifier outside of Flutter in a separate package has two purposes:
 >
-> * It allows Dart packages with no dependency on Flutter to use these classes. **This means that we can use them on AngularDart for example.**
+> * It allows Dart packages with no dependency on Flutter to use these classes. This means that we can use them on AngularDart for example.
 > * It allows solving some common problems with the original ChangeNotifier/ValueNotifier and/or their combination with provider.
 
 This second bullet is what we are really interested in. The bit that says "their combination with provider".
 
-By using `StateNotifier` instead of the original `ValueNotifier`, we get a lot of benefits:
+By using `StateNotifier` instead of the original `ValueNotifier` we get a lot of benefits:
 
 * A significant simplification of the integration with [Provider](https://pub.dev/packages/provider)
 * Simplified testing/mocking
-* Improved performances on `addListener` & `notifyListeners` equivalents.
+* Improved performances on `addListener` & `notifyListeners` equivalents
 * Extra safety through small API changes
 
 ## Show me the code
@@ -111,7 +108,7 @@ dependencies:
   provider: ^4.1.3
 ```
 
-We will begin by creating a `Counter` class that extends `StateNotifier` with a type `int`.
+We will begin by creating a `Counter` class that extends `StateNotifier` with a generic type `int`.
 
 ```dart
 class Counter extends StateNotifier<int>{
@@ -127,13 +124,15 @@ class Counter extends StateNotifier<int>{
 }
 ```
 
-The code is pretty clear, we have an `increment` and `decrement` method, which directly change the `state`. This state object is retrieved from `StateNotifier` and is of type `int` . Every time the state changes any subscribers to the `Counter` instance will be notified.
+The code is pretty clear, we have an `increment` and `decrement` method, which directly change the `state`. This state object is retrieved from `StateNotifier` and is of type `int` (as we specified). Every time the state changes any subscribers to the `Counter` instance will be notified.
 
-We can use this `Counter` like we would use a normal `ValueNotifier`. But for this tutorial we want to integrate `StateNotifier` with `Provider`. So let's do that.
+We can use this `Counter` like we would use a normal `ValueNotifier`, but for this tutorial we want to integrate our `Counter` with `Provider`. So let's do that.
 
 ### Using StateNotifier with Provider
 
 We'll use the [Flutter State Notifier](https://pub.dev/packages/flutter_state_notifier) package which add extra Flutter bindings to `StateNotifier`. This package is what allows us to integrate `StateNotifier` with `Provider` and our other widgets.
+
+***
 
 #### StateNotifierProvider:
 
@@ -141,8 +140,7 @@ We'll use the [Flutter State Notifier](https://pub.dev/packages/flutter_state_no
 
 Its job is to create a [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) and dispose of it when the provider is removed from the widget tree.
 
-It is used like most providers, with a small difference:  
-Instead of exposing one value, it exposes two values at the same time:
+It is used like most providers, with a small difference. Instead of exposing one value, it exposes two values at the same time:
 
 * The [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) instance
 * And the `state` of the [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html)
@@ -237,11 +235,11 @@ Now we're getting to the best part.
 
 Say we want to use `Provider.of`/`context.read` to connect our `Counter` with external services. `StateNotifier` makes this easy, all we have to do is mix-in `LocatorMixin`.
 
-As an example, let's pretend our counter application also needs to save the current counter value to local storage. For that we might need access to an external service within our `Counter` class. There are many ways we can access the service, for example using the [GetIt](https://pub.dev/packages/get_it) package or some other dependency injection framework. Or we could simply pass in the dependency through the constructor. However `StateNotifier` makes this easy for us using locators.
+As an example, let's pretend our counter application also needs to save the current counter value to local storage. For that we might need access to an external service within our `Counter` class. There are many ways we can access the service, for example using the [GetIt](https://pub.dev/packages/get_it) package or some other dependency injection framework. Or we could simply pass in the dependency through the constructor. However, `StateNotifier` makes this easy for us using locators.
 
 Let's explore.
 
-Let's create an `ILocalStorage` abstract class with one method called `saveInt`, and a `FakeLocalStorage` that implements it. We won't really be creating a local storage, instead we'll only print the value as this is only for demonstration purposes.
+We'll create an `ILocalStorage` abstract class with one method called `saveInt`, and a `FakeLocalStorage` that implements it. We won't really be creating a local storage, instead we'll only print the value as this is only for demonstration purposes.
 
 ```dart
 abstract class ILocalStorage {
@@ -256,7 +254,7 @@ class FakeLocalStorage implements ILocalStorage {
 }
 ```
 
-Next we will modify our `runApp` function to also have a `Provider<ILocalStorage>` that provides a `FakeLocalStorage` implementation. We use a `MultiProvider` to create the `StateNotifierProvider` as well.
+Next we will modify our `runApp` function to also have a `Provider<ILocalStorage>` that provides a `FakeLocalStorage` implementation. We use a `MultiProvider` to create and provide everything.
 
 ```dart
 void main() => runApp(
@@ -303,3 +301,11 @@ A couple of things to take note of:
 * We're adding the `LocatorMixin`
 * We're overriding the `state` setter so that we can save the value to local storage every time the state change
 * We're using the read method (from the `LocatorMixin`) to access the `ILocalStorage` dependency and calling `saveInt`.
+
+That's that. As you can see it's easy to access other dependencies in our `StateNotifier` when using `Provider`.
+
+## What's next?
+
+Using `Provider` and `StateNotifier`  is a quick and easy way to create and expose state in our Flutter applications. Not only that, but seeing as `StateNotifier`is not dependent on Flutter we can use our state classes for other projects as well, for example CLI apps or AngularDart.
+
+Instead of just passing around `int` values we can create more complicated state management using Sealed classes. Future tutorials will cover this in more detail. 
