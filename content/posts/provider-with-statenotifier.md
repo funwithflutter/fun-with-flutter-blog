@@ -2,7 +2,6 @@
 categories = []
 date = 2020-06-12T08:24:00Z
 description = "Using StateNotifier with Provider to easily manage state."
-draft = true
 slug = ""
 tags = ["State Managment"]
 thumbnail = ""
