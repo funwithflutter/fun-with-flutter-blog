@@ -114,19 +114,27 @@ class Counter extends StateNotifier<int>{
 }
 ```
 
-The code is pretty clear, we have an `increment` and `decrement` method, which directly change the `state`. This state object is retrieved from `StateNotifier` and is of type `int` . Every time the state changes any subscribers to the Counter instance will be notified.
+The code is pretty clear, we have an `increment` and `decrement` method, which directly change the `state`. This state object is retrieved from `StateNotifier` and is of type `int` . Every time the state changes any subscribers to the `Counter` instance will be notified.
 
-We can use this Counter class like we would use a normal `ValueNotifier`. But for this tutorial we want to integrate `StateNotifier` with `Provider`. So let's do that.
+We can use this `Counter` like we would use a normal `ValueNotifier`. But for this tutorial we want to integrate `StateNotifier` with `Provider`. So let's do that.
 
 ### Using StateNotifier with Provider
 
 We'll use the [Flutter State Notifier](https://pub.dev/packages/flutter_state_notifier) package which add extra Flutter bindings to `StateNotifier`. This package is what allows us to integrate `StateNotifier` with `Provider` and our other widgets.
 
-#### StateNotifierProvider
+#### StateNotifierProvider:
 
 [StateNotifierProvider](https://pub.dev/documentation/flutter_state_notifier/latest/flutter_state_notifier/StateNotifierProvider-class.html) is the equivalent of [ChangeNotifierProvider](https://pub.dev/documentation/provider/latest/provider/ChangeNotifierProvider-class.html) but for [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html).
 
 Its job is to create a [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) and dispose of it when the provider is removed from the widget tree.
+
+It is used like most providers, with a small difference:  
+Instead of exposing one value, it exposes two values at the same time:
+
+* The [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) instance
+* And the `state` of the [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html)
+
+For example, if we want to instantiate and provide our `Counter`, we can do this.
 
 ```dart
 void main() => runApp(
@@ -134,11 +142,82 @@ void main() => runApp(
         create: (_) => Counter(),
         child: MyApp(),
       ),
-    );
+    ); 
 ```
 
-It is used like most providers, with a small difference:  
-Instead of exposing one value, it exposes two values at the same time:
+This allows us to both:
 
-* The [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) instance
-* And the `state` of the [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html)
+* obtain the [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) in the widget tree, by writing `context.read<`Counter`>()`
+* obtain and observe the current \[int\], through `context.watch<int>()`
+
+So our `MyApp` will look like this:
+
+```dart
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    const fabPadding = EdgeInsets.all(5);
+
+    return MaterialApp(
+      title: 'Material App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('State Notifier Demo'),
+        ),
+        floatingActionButton: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Padding(
+              padding: fabPadding,
+              child: FloatingActionButton(
+                child: Icon(Icons.add),
+
+                ///Increment Counter
+                onPressed: () {
+                  context.read<Counter>().increment();
+                },
+              ),
+            ),
+            Padding(
+              padding: fabPadding,
+              child: FloatingActionButton(
+                  child: Icon(Icons.remove),
+
+                  ///Decrement Counter
+                  onPressed: () {
+                    context.read<Counter>().decrement();
+                  }),
+            ),
+          ],
+        ),
+        body: _Body(),
+      ),
+    );
+  }
+}
+
+class _Body extends StatelessWidget {
+  const _Body({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        child: Text(
+          context.watch<int>().toString(),
+          style: Theme.of(context).textTheme.headline4,
+        ),
+      ),
+    );
+  }
+}
+```
+
+That it. We have a working counter application. Our `_Body` is watching for changes on the `int` state and will rebuild whenever the state changes.
+
+## Service Locators
+
+Now we're getting to the best part. [**StateNotifier**](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) is easily compatible with [**provider**](https://pub.dev/packages/provider) through an extra mixin: `LocatorMixin`.
