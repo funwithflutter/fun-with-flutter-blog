@@ -89,13 +89,35 @@ To quote the documentation:
 
 This second bullet is what we are really interested in. The bit that says "their combination with provider".
 
-By using state_notifier instead of the original ValueNotifier, we get a lot of benefits:
+By using `StateNotifier` instead of the original `ValueNotifier`, we get a lot of benefits:
 
 * A significant simplification of the integration with [Provider](https://pub.dev/packages/provider)
 * Simplified testing/mocking
 * Improved performances on `addListener` & `notifyListeners` equivalents.
 * Extra safety through small API changes
 
+### Using StateNotifier with Provider
+
 In this tutorial, we will also use the [Flutter State Notifier](https://pub.dev/packages/flutter_state_notifier) package which add extra Flutter bindings to `StateNotifier`. This package is what allows us to integrate `StateNotifier` with `Provider` and our other widgets.
 
 ## Show me the code
+
+We will begin by creating a `Counter` class that extends `StateNotifier` with a type `int`.
+
+```dart
+class Counter extends StateNotifier<int>{
+  Counter() : super(0);
+
+  void increment() {
+    state++;
+  }
+ 
+  void decrement() {
+    state--;
+  }
+}
+```
+
+The code is pretty clear, we have an `increment` and `decrement` method, which directly change the `state`. This state object is retrieved from `StateNotifier` and is of type `int` . Every time the state changes any subscribers to the Counter instance will be notified. We can use this Counter class like we would use a normal `ValueNotifier`.
+
+But for this tutorial we want to integrate `StateNotifier` with `Provider`. So let's do that.
