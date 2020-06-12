@@ -45,18 +45,43 @@ counter.value += 1;  // Doesn't call anything.
 counter.dispose();
 ```
 
-Flutter also provides widget to easily consume a `ValueNotifier` :
+Flutter also provides a widget to easily consume a `ValueNotifier`, called
 
-So what is the stateNotifier package?
+[ValueListenableBuilder](https://api.flutter.dev/flutter/widgets/ValueListenableBuilder-class.html):
 
-StateNotifier re-implements ValueNotifier outside of Flutter.
+```dart
+final ValueNotifier<int> _counter = ValueNotifier<int>(0);
+
+ValueListenableBuilder(
+  builder: (BuildContext context, int value, Widget child) {
+    // This builder will only get called when the _counter
+    // is updated.
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Text('$value'),
+        child,
+      ],
+    );
+  },
+  valueListenable: _counter,
+  // The child parameter is most helpful if the child is
+  // expensive to build and does not depend on the value from
+  // the notifier.
+  child: ChildWidget(),
+);
+```
+
+## What is StateNotifier?
+
+`StateNotifier` re-implements `ValueNotifier` outside of Flutter.
 
 To quote the documentation:
 
 > Extracting ValueNotifier outside of Flutter in a separate package has two purposes:
-
-* It allows Dart packages with no dependency on Flutter to use these classes. **This means that we can use them on AngularDart for example.**
-* It allows solving some common problems with the original ChangeNotifier/ValueNotifier and/or their combination with provider.
+>
+> * It allows Dart packages with no dependency on Flutter to use these classes. **This means that we can use them on AngularDart for example.**
+> * It allows solving some common problems with the original ChangeNotifier/ValueNotifier and/or their combination with provider.
 
 This second bullet is what we are really interested in. The bit that says "their combination with provider".
 
