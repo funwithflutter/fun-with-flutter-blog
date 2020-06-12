@@ -160,10 +160,10 @@ void main() => runApp(
 
 This allows us to both:
 
-* obtain the [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) in the widget tree, by writing `context.read<`Counter`>()`
-* obtain and observe the current \[int\], through `context.watch<int>()`
+* obtain the [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) in the widget tree, by writing `context.read<Counter>()`
+* obtain and observe the current `int` state, through `context.watch<int>()`
 
-So our `MyApp` will look like this:
+Our final `MyApp` will look like this:
 
 ```dart
 class MyApp extends StatelessWidget {
@@ -229,7 +229,7 @@ class _Body extends StatelessWidget {
 }
 ```
 
-That it. We have a working counter application. Our `_Body` is watching for changes on the `int` state and will rebuild whenever the state changes.
+That's it, we have a working counter application. Our `_Body` is watching for changes on the `int` state and will rebuild whenever the state changes. And in our `FloatingActionButton`s we're accessing the `Counter` `StateNotifier` and calling `increment` and `decrement`.
 
 ## Service Locators
 
