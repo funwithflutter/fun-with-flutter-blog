@@ -72,7 +72,11 @@ ValueListenableBuilder(
 );
 ```
 
-## What is StateNotifier?
+Both a `ValueNotifier` and `ChangeNotifier` provide a convenient way to listen to value changes on an object. These classes are used throughout Flutter and they are used extensively with `Provider` when managing state. Using these two classes to manage the state of your application in Flutter is completely fine, and there are entire architectures based on this approach - see [Stacked](https://pub.dev/packages/stacked) made by the FilledStacks community.
+
+However, `ValueNotifier` and `ChangeNotifier` have some limitations and their implementation with `Provider` requires a lot of boilerplate code and is not as simple as it could be.
+
+## What is StateNotifier and why?
 
 `StateNotifier` re-implements `ValueNotifier` outside of Flutter.
 
@@ -87,11 +91,11 @@ This second bullet is what we are really interested in. The bit that says "their
 
 By using state_notifier instead of the original ValueNotifier, we get a lot of benefits:
 
-* A significant simplification of the integration with [**provider**](https://pub.dev/packages/provider)
+* A significant simplification of the integration with [Provider](https://pub.dev/packages/provider)
 * Simplified testing/mocking
 * Improved performances on `addListener` & `notifyListeners` equivalents.
 * Extra safety through small API changes
 
-In this tutorial, we will also use the flutter_state_notifier package which add extra Flutter bindings to StateNotifier. This package is what allows us to integrate StateNotifier with Provider and with our widgets.
+In this tutorial, we will also use the [Flutter State Notifier](https://pub.dev/packages/flutter_state_notifier) package which add extra Flutter bindings to `StateNotifier`. This package is what allows us to integrate `StateNotifier` with `Provider` and our other widgets.
 
-With the summary out of the way. Let's start the coding example.
+## Show me the code
