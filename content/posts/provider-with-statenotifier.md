@@ -10,21 +10,42 @@ title = "Provider with StateNotifier"
 type = ""
 
 +++
-In this video we will take a look at the State_Notifier and Flutter_State_notifier packages.
+## Overview
 
-As a demonstration we will create a counter application.
+In this tutorial we will take a look at the [State Notifier](https://pub.dev/packages/state_notifier) and [Flutter State Notifier](https://pub.dev/packages/flutter_state_notifier) packages, and how they can be used with [Provider](https://pub.dev/packages/provider).
 
-A simple example, but if you stick to the end of the video you will see all of the benefits that StateNotifier can provide, as well as appreciate its simplicity.
+As a demonstration we will create a counter application that also needs access to an external dependency to store the counter value to a "fake" local storage.
 
-Please note that this video assumes you are familiar with Provider and understand what a ChangeNotifier and ValueNotifier is.
+A simple example, but it serves to illustrate the simplicity of `StateNotifier` as well as the benefits it provides.
 
-If you are not familiar with Provider and ChangeNotifier then I recommend you first watch my video on Provider basics.
+Prefer to watch instead of read? Here's the video:
 
-Or you can take a look at the written tutorial for this video which provides links to the relevant resources and information you need.
+INSERT VIDEO
 
-But as a quick summary a ValueNotifier is a ChangeNotifier that holds a single value.
+## Before we begin
+
+**Note**: This tutorial assumes you are familiar with Provider and understand what a [ChangeNotifier](https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html "ChangeNotifier") and [ValueNotifier](https://api.flutter.dev/flutter/foundation/ValueNotifier-class.html "ValueNotifier") is.
+
+If you are not familiar with `Provider` and `ChangeNotifier` then I recommend you first watch my video on `Provider` basics.
+
+INSERT VIDEO
+
+But as a quick summary a `ValueNotifier` is a `ChangeNotifier` that holds a single value.
 
 > When value is replaced with something that is not equal to the old value as evaluated by the equality operator ==, this class notifies its listeners.
+
+```dart
+final counter = ValueNotifier(0);
+counter.addListener(_myCallback);
+counter.value = 10;  // Calls _myCallback.
+counter.value += 1;  // Also calls _myCallback.
+counter.removeListener(_myCallback);
+  
+counter.value += 1;  // Doesn't call anything.
+counter.dispose();
+```
+
+Flutter also provides widget to easily consume a `ValueNotifier` :
 
 So what is the stateNotifier package?
 
