@@ -26,3 +26,5 @@ fields:
 - type: file
   name: thumbnail
   label: thumbnail
+pages:
+- content/about.md
