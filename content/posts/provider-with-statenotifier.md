@@ -96,10 +96,6 @@ By using `StateNotifier` instead of the original `ValueNotifier`, we get a lot o
 * Improved performances on `addListener` & `notifyListeners` equivalents.
 * Extra safety through small API changes
 
-### Using StateNotifier with Provider
-
-In this tutorial, we will also use the [Flutter State Notifier](https://pub.dev/packages/flutter_state_notifier) package which add extra Flutter bindings to `StateNotifier`. This package is what allows us to integrate `StateNotifier` with `Provider` and our other widgets.
-
 ## Show me the code
 
 We will begin by creating a `Counter` class that extends `StateNotifier` with a type `int`.
@@ -118,6 +114,31 @@ class Counter extends StateNotifier<int>{
 }
 ```
 
-The code is pretty clear, we have an `increment` and `decrement` method, which directly change the `state`. This state object is retrieved from `StateNotifier` and is of type `int` . Every time the state changes any subscribers to the Counter instance will be notified. We can use this Counter class like we would use a normal `ValueNotifier`.
+The code is pretty clear, we have an `increment` and `decrement` method, which directly change the `state`. This state object is retrieved from `StateNotifier` and is of type `int` . Every time the state changes any subscribers to the Counter instance will be notified.
 
-But for this tutorial we want to integrate `StateNotifier` with `Provider`. So let's do that.
+We can use this Counter class like we would use a normal `ValueNotifier`. But for this tutorial we want to integrate `StateNotifier` with `Provider`. So let's do that.
+
+### Using StateNotifier with Provider
+
+We'll use the [Flutter State Notifier](https://pub.dev/packages/flutter_state_notifier) package which add extra Flutter bindings to `StateNotifier`. This package is what allows us to integrate `StateNotifier` with `Provider` and our other widgets.
+
+#### StateNotifierProvider
+
+[StateNotifierProvider](https://pub.dev/documentation/flutter_state_notifier/latest/flutter_state_notifier/StateNotifierProvider-class.html) is the equivalent of [ChangeNotifierProvider](https://pub.dev/documentation/provider/latest/provider/ChangeNotifierProvider-class.html) but for [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html).
+
+Its job is to create a [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) and dispose of it when the provider is removed from the widget tree.
+
+```dart
+void main() => runApp(
+      StateNotifierProvider<Counter, int>(
+        create: (_) => Counter(),
+        child: MyApp(),
+      ),
+    );
+```
+
+It is used like most providers, with a small difference:  
+Instead of exposing one value, it exposes two values at the same time:
+
+* The [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html) instance
+* And the `state` of the [StateNotifier](https://pub.dev/documentation/state_notifier/latest/state_notifier/StateNotifier-class.html)
