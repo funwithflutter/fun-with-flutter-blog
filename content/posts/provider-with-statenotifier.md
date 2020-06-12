@@ -235,9 +235,11 @@ That's it, we have a working counter application. Our `_Body` is watching for ch
 
 Now we're getting to the best part.
 
-In this example, we may want to use `Provider.of`/`context.read` to connect our `Counter` with external services. `StateNotifier` makes this easy, all we have to do is mix-in `LocatorMixin`.
+Say we want to use `Provider.of`/`context.read` to connect our `Counter` with external services. `StateNotifier` makes this easy, all we have to do is mix-in `LocatorMixin`.
 
-Imagine every time the `Counter` state is updated we also want to save the state value to local storage.
+As an example, let's pretend our counter application also needs to save the current counter value to local storage. For that we might need access to an external service within our `Counter` class. There are many ways we can access the service, for example using the [GetIt](https://pub.dev/packages/get_it) package or some other dependency injection framework. Or we could simply pass in the dependency through the constructor. However `StateNotifier` makes this easy for us using locators.
+
+Let's explore.
 
 Let's create an `ILocalStorage` abstract class with one method called `saveInt`, and a `FakeLocalStorage` that implements it. We won't really be creating a local storage, instead we'll only print the value as this is only for demonstration purposes.
 
