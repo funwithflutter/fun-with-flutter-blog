@@ -1,0 +1,26 @@
+{
+  "hosting": {
+    "target": "blog",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(eot|json|ttf|ttc|woff|font.css)",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "public, no-cache, max-age=31536000"
+          }
+        ]
+      }
+    ]
+  }
+}
