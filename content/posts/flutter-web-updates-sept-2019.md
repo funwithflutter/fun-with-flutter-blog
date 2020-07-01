@@ -7,7 +7,7 @@ date: 2019-09-18T12:11:37+07:00
 type: blog
 draft: false
 tags:
-- Flutter Web
+- flutter-web
 thumbnail: "fun_with_web_devlog_02.png"
 description: "Updates to Flutter Web - September 2019"
 ---

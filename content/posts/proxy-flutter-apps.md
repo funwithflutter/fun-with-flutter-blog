@@ -8,9 +8,9 @@ draft: false
 categories:
 - General
 tags:
-- Tools
-- Proxy
-- Networking
+- tools
+- proxy
+- networking
 thumbnail: "proxy_app_traffic.png"
 description: "How to proxy Flutter network traffic"
 # series:

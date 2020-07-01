@@ -3,12 +3,12 @@ title: "Creating Animation Curves in Flutter"
 slug: custom-curves-in-flutter
 description: null
 date: 2020-02-24T14:25:21+07:00
-type: posts
+type: blog
 draft: false
 categories:
 - General
 tags:
-- Animation
+- animation
 # series:
 # -
 thumbnail: "flutter_custom_curves.png"
