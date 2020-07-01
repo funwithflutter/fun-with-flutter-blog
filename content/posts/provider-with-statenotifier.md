@@ -5,8 +5,9 @@ description = "Using StateNotifier with Provider to easily manage state."
 type = "blog"
 slug = ""
 tags = ["state-management"]
-thumbnail = ""
+thumbnail = "/provider-with-state-notifer.jpg"
 title = "Provider with StateNotifier"
+type = ""
 
 +++
 ## Overview
@@ -17,13 +18,15 @@ As a demonstration we will create a counter application that also needs access t
 
 A simple example, but it serves to illustrate the simplicity of `StateNotifier` as well as its benefits.
 
+{{< youtube 4J7rF3KirxM>}}
+
 ## Before we begin
 
 **Note**: This tutorial assumes you are familiar with Provider and understand what a [ChangeNotifier](https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html "ChangeNotifier") and [ValueNotifier](https://api.flutter.dev/flutter/foundation/ValueNotifier-class.html "ValueNotifier") is.
 
 If you are not familiar with `Provider` and `ChangeNotifier` then I recommend you first watch my video on `Provider` basics.
 
-INSERT VIDEO
+{{< youtube NeAMD0lQ5jw>}}
 
 But as a quick summary a `ValueNotifier` is a `ChangeNotifier` that holds a single value.
 
@@ -294,7 +297,6 @@ class Counter extends StateNotifier<int> with LocatorMixin{
 }
 ```
 
-  
 A couple of things to take note of:
 
 * We're adding the `LocatorMixin`
@@ -307,4 +309,4 @@ That's that. As you can see it's easy to access other dependencies in our `State
 
 Using `Provider` and `StateNotifier`  is a quick and easy way to create and expose state in our Flutter applications. Not only that, but seeing as `StateNotifier`is not dependent on Flutter we can use our state classes for other projects as well, for example CLI apps or AngularDart.
 
-Instead of just passing around `int` values we can create more complicated state management using Sealed classes. Future tutorials will cover this in more detail. 
+Instead of just passing around `int` values we can create more complicated state management using Sealed classes. Future tutorials will cover this in more detail.
