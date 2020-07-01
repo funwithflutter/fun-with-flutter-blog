@@ -5,9 +5,8 @@ description = "Using StateNotifier with Provider to easily manage state."
 type = "blog"
 slug = ""
 tags = ["state-management"]
-thumbnail = "/provider-with-state-notifer.jpg"
-title = "Provider with StateNotifier"
-type = ""
+thumbnail = "provider-with-state-notifer.jpg"
+  title = "Provider with StateNotifier"
 
 +++
 ## Overview
