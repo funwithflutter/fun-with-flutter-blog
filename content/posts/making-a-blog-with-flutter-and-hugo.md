@@ -8,8 +8,8 @@ draft: false
 categories:
 - General
 tags:
-- Flutter Web
-- Hugo
+- flutter-web
+- hugo
 thumbnail: "fun_with_web_devlog_01.png"
 description: "Using Hugo to generate a static API and making a website with Flutter."
 # series: 

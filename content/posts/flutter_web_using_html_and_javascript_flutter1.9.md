@@ -8,7 +8,7 @@ draft: false
 categories:
 - General
 tags:
-- Flutter Web
+- flutter-web
 thumbnail: "fun_with_web_devlog_03.png"
 description: "How to use HTML and JavaScript in your Flutter Web application - Flutter 1.9"
 # series:

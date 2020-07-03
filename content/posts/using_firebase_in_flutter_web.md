@@ -8,7 +8,7 @@ draft: false
 categories:
 - General
 tags:
-- Flutter Web
+- flutter-web
 thumbnail: "fun_with_web_devlog_04.png"
 description: "Initialize Firebase in a Flutter web application and incorporate Firebase Authentication"
 # series:

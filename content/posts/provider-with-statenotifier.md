@@ -2,11 +2,11 @@
 categories = []
 date = 2020-06-12T08:24:00Z
 description = "Using StateNotifier with Provider to easily manage state."
+type = "blog"
 slug = ""
-tags = ["State Managment"]
-thumbnail = "/provider-with-state-notifer.jpg"
-title = "Provider with StateNotifier"
-type = ""
+tags = ["state-management"]
+thumbnail = "provider-with-state-notifer.jpg"
+  title = "Provider with StateNotifier"
 
 +++
 ## Overview
